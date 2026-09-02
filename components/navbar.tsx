@@ -7,6 +7,8 @@ import { cn } from '@/lib/utils'
 const links = [
   { href: '/', label: 'Home' },
   { href: '/moon-cycle', label: 'Tracker' },
+  { href: '/compress', label: 'Compress to WebP' },
+  { href: '/favicon-gen', label: 'Favicon Generator' },
   { href: '/contact', label: 'Contact' },
 ]
 
