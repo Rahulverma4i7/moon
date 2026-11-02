@@ -8,6 +8,7 @@ const links = [
   { href: '/', label: 'Home' },
   { href: '/moon-cycle', label: 'Tracker' },
   { href: '/compress', label: 'Compress to WebP' },
+  { href: '/raw-to-jpeg', label: 'Compress to jpeg' },
   { href: '/favicon-gen', label: 'Favicon Generator' },
   { href: '/contact', label: 'Contact' },
 ]

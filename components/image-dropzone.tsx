@@ -1,11 +1,12 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
-import { Upload, X } from "lucide-react";
+import { Upload } from "lucide-react";
 
 interface Props {
     onFilesSelected: (files: File[]) => void;
     multiple?: boolean;
+    /** Pass a string like "image/*" or ".cr2,.nef". If omitted, accepts ALL files. */
     accept?: string;
     disabled?: boolean;
 }
@@ -13,7 +14,7 @@ interface Props {
 export function ImageDropzone({
     onFilesSelected,
     multiple = true,
-    accept = "image/png,image/jpeg,image/webp,image/jpg",
+    accept,
     disabled = false,
 }: Props) {
     const [dragOver, setDragOver] = useState(false);
@@ -22,7 +23,7 @@ export function ImageDropzone({
     const handleFiles = useCallback(
         (fileList: FileList | null) => {
             if (!fileList) return;
-            const files = Array.from(fileList).filter((f) => f.type.startsWith("image/"));
+            const files = Array.from(fileList);
             if (files.length > 0) onFilesSelected(files);
         },
         [onFilesSelected]
@@ -63,10 +64,10 @@ export function ImageDropzone({
             </div>
 
             <p className="mb-1 text-sm font-medium">
-                {dragOver ? "Drop images here" : "Drag & drop images"}
+                {dragOver ? "Drop files here" : "Drag & drop or click to browse"}
             </p>
             <p className="text-xs text-muted-foreground">
-                or click to browse · PNG, JPG, WebP
+                {accept ? "Filtered by file type" : "All file types accepted"}
             </p>
         </div>
     );
